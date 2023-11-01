@@ -1,6 +1,7 @@
 import { Alert, Button, MenuItem, Snackbar, Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+import Header from "../../componenets/Header";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 
@@ -60,6 +61,8 @@ const Form = () => {
       noValidate
       autoComplete="off"
     >
+       <Header title={"FORM"} descTitle={"Form for Registration"} />
+
       <Stack direction="row" sx={{ gap: 3 }}>
         <TextField
           error={Boolean(errors.firstName)}

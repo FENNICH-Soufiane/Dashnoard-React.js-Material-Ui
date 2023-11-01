@@ -2,7 +2,7 @@ import Line from './Line'
 
 const LineChart = () => {
   return (
-    <Line />
+    <Line height_={"75vh"} />
   )
 }
 

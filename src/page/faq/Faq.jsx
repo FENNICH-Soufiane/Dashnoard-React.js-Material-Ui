@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useState } from 'react';
 import { Stack } from '@mui/material';
+import Header from '../../componenets/Header';
 
 const Faq = () => {
 
@@ -16,6 +17,8 @@ const Faq = () => {
 
   return (
     <Stack direction={"column"} gap={2}>
+       <Header title={"F&Q"} descTitle={"Frequently Questions"} />
+
       <Accordion 
       defaultExpanded // cette attribut pour ouvrir l'accordion lors de chargement de la page
       onChange={handleChange('panel1')}>

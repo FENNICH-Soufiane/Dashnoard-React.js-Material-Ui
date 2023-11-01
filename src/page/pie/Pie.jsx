@@ -1,5 +1,6 @@
 import { Box, useTheme } from "@mui/material";
 import { ResponsivePie } from "@nivo/pie";
+import Header from "../../componenets/Header";
 
 
 const data = [
@@ -35,12 +36,15 @@ const data = [
   }
 ]
 
-const Pie = () => {
+// eslint-disable-next-line react/prop-types
+const Pie = ({isDashboard = false}) => {
 
   const theme = useTheme()
 
   return (
-    <Box sx={{height: "75vh"}}>
+    <Box sx={{height: isDashboard ? "220px" : "75vh"}}>
+       <Header title={"PIE CHART"} descTitle={"Representation by Pie Chart"} />
+
       <ResponsivePie
         // @ts-ignore
         data={data}
@@ -153,8 +157,8 @@ const Pie = () => {
               "tableCellValue": {}
           }
       }}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-        innerRadius={0.5}
+        margin={isDashboard ?{ top: 15, right: 40, bottom: 15, left: 40 } :{ top: 40, right: 80, bottom: 80, left: 80 }}
+        innerRadius={isDashboard ? 0.7 : 0.5}
         padAngle={0.7}
         cornerRadius={3}
         activeOuterRadiusOffset={8}
@@ -163,6 +167,9 @@ const Pie = () => {
           from: "color",
           modifiers: [["darker", 0.2]],
         }}
+        enableArcLinkLabels={isDashboard ? false: true}
+        enableArcLabels={isDashboard ? false:true }
+
         arcLinkLabelsSkipAngle={10}
         arcLinkLabelsTextColor={theme.palette.text.primary}
         arcLinkLabelsThickness={2}
@@ -242,7 +249,11 @@ const Pie = () => {
             id: "lines",
           },
         ]}
-        legends={[
+        legends={
+          isDashboard ? [] :(
+
+          
+          [
           {
             anchor: "bottom",
             direction: "row",
@@ -266,7 +277,7 @@ const Pie = () => {
               },
             ],
           },
-        ]}
+        ])}
       />
     </Box>
   );

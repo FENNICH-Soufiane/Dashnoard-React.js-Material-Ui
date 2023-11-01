@@ -6,6 +6,7 @@ import {
   LockOpenOutlined,
   SecurityOutlined,
 } from "@mui/icons-material";
+import Header from "../../componenets/Header";
 
 const Team = () => {
   const theme = useTheme();
@@ -70,6 +71,10 @@ const Team = () => {
 
   return (
     <Box sx={{ height: 500, width: "98%", mx: "auto" }}>
+      
+        <Header title={"TEAM"} descTitle={"Managing the Team Menbers"} />
+      
+
       <DataGrid
         rows={rows}
         // @ts-ignore
@@ -83,7 +88,6 @@ const Team = () => {
         }}
         pageSizeOptions={[5, 10, 25]}
       />
-      
     </Box>
   );
 };

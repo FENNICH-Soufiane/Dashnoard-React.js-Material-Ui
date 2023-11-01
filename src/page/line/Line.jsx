@@ -1,7 +1,9 @@
 import { Box, useTheme } from "@mui/material";
 import { ResponsiveLine } from "@nivo/line";
+import Header from "../../componenets/Header";
 
-const Line = () => {
+// eslint-disable-next-line react/prop-types
+const Line = ({isDashboard = false}) => {
   const theme = useTheme()
   const data = [
     {
@@ -276,7 +278,9 @@ const Line = () => {
     },
   ];
   return (
-    <Box sx={{ height: "75vh" }}>
+    <Box sx={{ height: isDashboard ? "280px": "75vh" }}>
+       <Header title={"LINE CHART"} descTitle={"Representation by Line Chart"} />
+
       <ResponsiveLine
         data={data}
         theme={{
@@ -405,7 +409,7 @@ const Line = () => {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "transportation",
+          legend: isDashboard ? null : "transportation",
           legendOffset: 36,
           legendPosition: "middle",
         }}
@@ -413,7 +417,7 @@ const Line = () => {
           tickSize: 5,
           tickPadding: 5,
           tickRotation: 0,
-          legend: "Count",
+          legend: isDashboard ? null : "Count",
           legendOffset: -44,
           legendPosition: "middle",
         }}

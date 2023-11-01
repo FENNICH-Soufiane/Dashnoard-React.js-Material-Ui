@@ -2,13 +2,17 @@ import { Box, useTheme } from "@mui/material";
 import { ResponsiveChoropleth } from "@nivo/geo";
 import { geo } from "./world_countries";
 import { data } from "./data";
+import Header from "../../componenets/Header";
 
 
 
-const Geography = () => {
+// eslint-disable-next-line react/prop-types
+const Geography = ({isDashboard = false}) => {
   const theme = useTheme()
   return (
-    <Box sx={{height: "75vh", border: `1px solid ${theme.palette.text.primary}`, borderRadius: "5px"}}>
+    <Box sx={{height: isDashboard ? "380px" : "75vh", border: isDashboard ? null :`1px solid ${theme.palette.text.primary}`, borderRadius: "5px"}}>
+       <Header title={"GEOGRAPHY"} descTitle={"Geography Representation"} />
+      
       <ResponsiveChoropleth
         data={data}
         theme={{
@@ -128,7 +132,7 @@ const Geography = () => {
         unknownColor="#666666"
         label="properties.name"
         valueFormat=".2s"
-        projectionScale={119}
+        projectionScale={isDashboard ? 95: 119}
         projectionTranslation={[ 0.5, 0.7 ]}        
         projectionRotation={[0, 0, 0]}
         enableGraticule={false}
@@ -189,7 +193,9 @@ const Geography = () => {
             id: "gradient",
           },
         ]}
-        legends={[
+        legends={
+          isDashboard ? []:
+          [
           {
             anchor: "bottom-left",
             direction: "column",
